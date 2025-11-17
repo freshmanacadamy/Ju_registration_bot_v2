@@ -3,29 +3,18 @@
   "builds": [
     {
       "src": "api/bot.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["lib/**"]
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/bot",
       "dest": "/api/bot.js",
-      "methods": ["POST", "GET", "HEAD"]
+      "methods": ["POST", "GET"]
     },
     {
       "src": "/(.*)",
       "dest": "/api/bot.js"
     }
-  ],
-  "env": {
-    "TELEGRAM_BOT_TOKEN": "@telegram-bot-token",
-    "BOT_USERNAME": "@bot-username",
-    "ADMIN_IDS": "@admin-ids",
-    "FIREBASE_PROJECT_ID": "@firebase-project-id",
-    "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
-    "FIREBASE_CLIENT_EMAIL": "@firebase-client-email"
-  }
+  ]
 }
