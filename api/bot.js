@@ -1,14 +1,14 @@
 require('dotenv').config();
 const { Telegraf, session, Markup } = require('telegraf');
 
-// Import all modules
-const config = require('../lib/config');
-const database = require('../lib/database');
-const notification = require('../lib/notification');
-const registration = require('../lib/registration');
-const payment = require('../lib/payment');
-const referral = require('../lib/referral');
-const admin = require('../lib/admin');
+// Import all modules - FIXED PATHS
+const config = require('./lib/config');
+const database = require('./lib/database');
+const notification = require('./lib/notification');
+const registration = require('./lib/registration');
+const payment = require('./lib/payment');
+const referral = require('./lib/referral');
+const admin = require('./lib/admin');
 
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
@@ -92,6 +92,9 @@ async function showMainMenu(ctx) {
   
   await ctx.replyWithMarkdown(menuText, keyboard);
 }
+
+// ... REST OF YOUR bot.js CODE CONTINUES THE SAME ...
+// (Just make sure all imports at the top use './lib/' instead of '../lib/')
 
 bot.command('menu', async (ctx) => {
   await showMainMenu(ctx);
